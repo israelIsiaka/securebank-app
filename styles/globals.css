@@ -1,0 +1,234 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: #f1f5f9;
+  color: #1e293b;
+  min-height: 100vh;
+}
+
+/* ── Navbar ──────────────────────────────────────────────────────────────── */
+.navbar {
+  background: #1e3a5f;
+  color: white;
+  padding: 0 28px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+.navbar-brand { font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+.navbar-user  { display: flex; align-items: center; gap: 16px; font-size: 14px; }
+
+.btn-logout {
+  background: rgba(255,255,255,0.15);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+  padding: 7px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+.btn-logout:hover { background: rgba(255,255,255,0.28); }
+
+/* ── Nav Tabs ────────────────────────────────────────────────────────────── */
+.nav-tabs {
+  background: white;
+  border-bottom: 2px solid #e2e8f0;
+  display: flex;
+  padding: 0 28px;
+  overflow-x: auto;
+}
+.nav-tab {
+  padding: 14px 18px;
+  text-decoration: none;
+  color: #64748b;
+  font-size: 14px;
+  font-weight: 500;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.nav-tab:hover  { color: #1e3a5f; }
+.nav-tab.active { color: #1e3a5f; border-bottom-color: #1e3a5f; }
+
+/* ── Layout ──────────────────────────────────────────────────────────────── */
+.main-content {
+  max-width: 820px;
+  margin: 32px auto;
+  padding: 0 24px;
+}
+.page-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 24px;
+}
+
+/* ── Card ────────────────────────────────────────────────────────────────── */
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 28px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  margin-bottom: 24px;
+}
+.card h2 { font-size: 17px; font-weight: 600; margin-bottom: 20px; color: #1e293b; }
+
+/* ── Balance Card ────────────────────────────────────────────────────────── */
+.balance-card {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+  color: white;
+  border-radius: 16px;
+  padding: 36px 32px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.balance-card .bal-label   { font-size: 14px; opacity: 0.75; margin-bottom: 10px; letter-spacing: 0.05em; }
+.balance-card .bal-amount  { font-size: 52px; font-weight: 800; margin-bottom: 6px; letter-spacing: -1px; }
+.balance-card .bal-account { font-size: 13px; opacity: 0.65; }
+
+/* ── Quick Actions ───────────────────────────────────────────────────────── */
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.action-btn {
+  background: white;
+  border: none;
+  border-radius: 12px;
+  padding: 22px 12px;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: #1e293b;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  transition: transform 0.18s, box-shadow 0.18s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.action-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.12); }
+.action-btn .icon  { font-size: 30px; }
+.action-btn .label { font-size: 13px; font-weight: 600; color: #475569; }
+
+/* ── Forms ───────────────────────────────────────────────────────────────── */
+.form-group         { margin-bottom: 20px; }
+.form-group label   { display: block; font-size: 14px; font-weight: 500; color: #475569; margin-bottom: 7px; }
+.form-group input,
+.form-group select  {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  background: white;
+}
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+}
+.form-hint { font-size: 13px; color: #94a3b8; margin-top: 5px; }
+
+.btn-primary {
+  background: #1e3a5f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.2s;
+}
+.btn-primary:hover    { background: #2563eb; }
+.btn-primary:disabled { background: #94a3b8; cursor: not-allowed; }
+
+.btn-danger {
+  background: transparent;
+  color: #dc2626;
+  border: 1.5px solid #fecaca;
+  border-radius: 8px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-danger:hover { background: #fee2e2; }
+
+/* ── Messages ────────────────────────────────────────────────────────────── */
+.msg-error {
+  background: #fef2f2; border: 1.5px solid #fecaca; color: #dc2626;
+  padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 14px;
+}
+.msg-success {
+  background: #f0fdf4; border: 1.5px solid #bbf7d0; color: #16a34a;
+  padding: 12px 16px; border-radius: 8px; margin-bottom: 16px; font-size: 14px;
+}
+
+/* ── Transaction Table ───────────────────────────────────────────────────── */
+.table-wrapper { overflow-x: auto; }
+table          { width: 100%; border-collapse: collapse; font-size: 14px; }
+thead tr       { background: #f8fafc; }
+th { text-align: left; padding: 12px 16px; font-weight: 600; color: #64748b; border-bottom: 2px solid #e2e8f0; }
+td { padding: 14px 16px; border-bottom: 1px solid #f1f5f9; }
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: #fafafa; }
+
+.badge {
+  display: inline-block; padding: 4px 11px;
+  border-radius: 20px; font-size: 12px; font-weight: 600;
+}
+.badge-deposit      { background: #dcfce7; color: #16a34a; }
+.badge-withdrawal   { background: #fee2e2; color: #dc2626; }
+.badge-transfer-in  { background: #dbeafe; color: #2563eb; }
+.badge-transfer-out { background: #fef3c7; color: #b45309; }
+
+.amount-positive { color: #16a34a; font-weight: 600; }
+.amount-negative { color: #dc2626; font-weight: 600; }
+
+/* ── Empty State ─────────────────────────────────────────────────────────── */
+.empty-state       { text-align: center; padding: 48px 24px; color: #94a3b8; }
+.empty-state .icon { font-size: 52px; margin-bottom: 14px; }
+.empty-state p     { font-size: 15px; }
+
+/* ── Auth Page ───────────────────────────────────────────────────────────── */
+.auth-page {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+}
+.auth-card {
+  background: white; border-radius: 18px; padding: 44px 40px;
+  width: 100%; max-width: 420px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+}
+.auth-logo     { font-size: 52px; text-align: center; margin-bottom: 12px; }
+.auth-card h1  { font-size: 28px; font-weight: 800; color: #1e3a5f; text-align: center; margin-bottom: 4px; }
+.auth-subtitle { color: #94a3b8; font-size: 14px; text-align: center; margin-bottom: 32px; }
+
+.demo-creds {
+  margin-top: 24px; padding: 14px 16px;
+  background: #f8fafc; border-radius: 8px; font-size: 13px; color: #64748b;
+}
+.demo-creds strong { color: #1e293b; display: block; margin-bottom: 6px; }
+.demo-creds p      { margin-bottom: 3px; }
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .quick-actions { grid-template-columns: repeat(2, 1fr); }
+  .balance-card .bal-amount { font-size: 38px; }
+  .navbar-user span { display: none; }
+}
