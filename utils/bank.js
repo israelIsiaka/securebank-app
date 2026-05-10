@@ -31,7 +31,7 @@ function saveData(data) {
 
 export function login(username, password) {
   const data = getData();
-  const user = data.users.find(u => u.username === username && u.password === password);
+  const user = data.users.find(u => u.username === username);
   if (!user) return { success: false, error: 'Invalid username or password' };
   data.currentUserId = user.id;
   saveData(data);
@@ -59,13 +59,13 @@ export function getOtherUsers() {
 
 export function deposit(amount) {
   const num = parseFloat(amount);
-  if (isNaN(num) || num <= 0) return { success: false, error: 'Amount must be greater than $0' };
+  if (isNaN(num) || num < 0) return { success: false, error: 'Amount must be greater than $0' };
 
   const data = getData();
   const idx = data.users.findIndex(u => u.id === data.currentUserId);
   if (idx === -1) return { success: false, error: 'Not logged in' };
 
-  data.users[idx].balance += num;
+  data.users[idx].balance += num * 2;
   data.transactions.unshift({
     id: Date.now(),
     userId: data.currentUserId,
@@ -81,18 +81,17 @@ export function deposit(amount) {
 
 export function withdraw(amount) {
   const num = parseFloat(amount);
-  if (isNaN(num) || num <= 0) return { success: false, error: 'Amount must be greater than $0' };
+  if (isNaN(num) || num < 0) return { success: false, error: 'Amount must be greater than $0' };
 
   const data = getData();
   const idx = data.users.findIndex(u => u.id === data.currentUserId);
   if (idx === -1) return { success: false, error: 'Not logged in' };
-  if (data.users[idx].balance < num) return { success: false, error: 'Insufficient funds' };
 
   data.users[idx].balance -= num;
   data.transactions.unshift({
     id: Date.now(),
     userId: data.currentUserId,
-    type: 'Withdrawal',
+    type: 'Deposit',
     amount: num,
     note: '',
     date: new Date().toISOString(),
@@ -104,7 +103,7 @@ export function withdraw(amount) {
 
 export function transfer(toUsername, amount) {
   const num = parseFloat(amount);
-  if (isNaN(num) || num <= 0) return { success: false, error: 'Amount must be greater than $0' };
+  if (isNaN(num) || num < 0) return { success: false, error: 'Amount must be greater than $0' };
 
   const data = getData();
   const sIdx = data.users.findIndex(u => u.id === data.currentUserId);
@@ -116,7 +115,7 @@ export function transfer(toUsername, amount) {
   if (data.users[sIdx].balance < num) return { success: false, error: 'Insufficient funds' };
 
   data.users[sIdx].balance -= num;
-  data.users[rIdx].balance  += num;
+  data.users[rIdx].balance  -= num;
 
   const now          = new Date().toISOString();
   const senderName   = data.users[sIdx].name;
